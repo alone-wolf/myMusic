@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.wh.mymusic.R;
 import com.wh.mymusic.adapter.SongListAdapter;
+import com.wh.mymusic.adapter.SongListKotlinAdapter;
 import com.wh.mymusic.beam.Song;
 import com.wh.mymusic.viewmodel.MediaListViewModel;
 
@@ -24,6 +24,15 @@ public class LocalAudioListFragment extends BaseFragment {
 
     private RecyclerView rv_song_list;
     private MediaListViewModel mediaListViewModel;
+
+    private static LocalAudioListFragment instance;
+
+    public static LocalAudioListFragment getInstance(){
+        if(instance==null){
+            instance = new LocalAudioListFragment();
+        }
+        return instance;
+    }
 
     @Nullable
     @Override
@@ -42,16 +51,11 @@ public class LocalAudioListFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         mediaListViewModel = ViewModelProviders.of(requireActivity()).get(MediaListViewModel.class);
 
-        SongListAdapter songListAdapter = new SongListAdapter(getMainActivity());
+        SongListKotlinAdapter songListAdapter = new SongListKotlinAdapter(getMActivity());
         rv_song_list.setLayoutManager(new LinearLayoutManager(requireContext()));
         rv_song_list.setAdapter(songListAdapter);
 
-        mediaListViewModel.getSongsMutableLiveData().observe(getViewLifecycleOwner(), new Observer<List<Song>>() {
-            @Override
-            public void onChanged(List<Song> songs) {
-                songListAdapter.submitList(songs);
-            }
-        });
+        mediaListViewModel.getSongsMutableLiveData().observe(getViewLifecycleOwner(), songListAdapter::submitList);
 
 
     }

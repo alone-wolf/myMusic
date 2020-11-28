@@ -1,81 +1,72 @@
 package com.wh.mymusic.activity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.permissionx.guolindev.PermissionX;
-import com.permissionx.guolindev.callback.ExplainReasonCallback;
-import com.permissionx.guolindev.callback.RequestCallback;
-import com.permissionx.guolindev.request.ExplainScope;
-import com.wh.mymusic.BaseApp;
-import com.wh.mymusic.util.MediaPrepareUtils;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.navigation.NavigationView;
 import com.wh.mymusic.R;
-import com.wh.mymusic.beam.Audio;
-import com.wh.mymusic.viewmodel.MediaListViewModel;
+import com.wh.mymusic.util.Util;
 
-import java.util.List;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-@RequiresApi(api = Build.VERSION_CODES.Q)
-public class MainActivity extends AppCompatActivity {
-//    private final String[] PERMISSIONS = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
+public class MainActivity extends BaseMainActivity {
 
-    private String TAG = "WH_" + getClass().getSimpleName();
-
-    private MediaListViewModel mediaListViewModel;
+    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            Util.setAllowDrawUnderStatusBar(getWindow());
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+            Util.setStatusBarTranslucent(getWindow());
 
-        mediaListViewModel = ViewModelProviders.of(this).get(MediaListViewModel.class);
+        setContentView(R.layout.activity_drawer);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.localMainFragment, R.id.settingsFragment)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
     }
 
     @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        if (newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT || newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT) {
-            Toast.makeText(MainActivity.this, "现在是竖屏", Toast.LENGTH_SHORT).show();
-        }
-        if (newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE || newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE) {
-            Toast.makeText(MainActivity.this, "现在是横屏", Toast.LENGTH_SHORT).show();
-        }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.side_drawer_menu, menu);
+        return true;
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        menu.add("settings");
-//        return super.onCreateOptionsMenu(menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        Log.d(TAG, "onOptionsItemSelected: " + item.toString());
-//        switch (item.toString()) {
-//            case "settings": {
-//                startActivity(new Intent(this, SettingsActivity.class));
-//            }
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 }

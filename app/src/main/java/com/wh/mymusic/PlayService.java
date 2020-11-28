@@ -81,6 +81,9 @@ public class PlayService extends Service {
                         Log.d(TAG, "onReceive: " + ACTION);
                         if (player.hasNext()) {
                             player.next();
+                            if(!player.isPlaying()){
+                                player.play();
+                            }
                         }
                         break;
                     }
@@ -88,6 +91,9 @@ public class PlayService extends Service {
                         Log.d(TAG, "onReceive: " + ACTION);
                         if (player.hasPrevious()) {
                             player.previous();
+                            if(!player.isPlaying()){
+                                player.play();
+                            }
                         }
                         break;
                     }

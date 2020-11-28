@@ -21,8 +21,4 @@ public class BaseMainActivity extends AppCompatActivity {
     MediaListViewModel initVideoListViewModel(){
         return ViewModelProviders.of(this).get(MediaListViewModel.class);
     }
-
-    MediaListViewModel getMediaListViewModel(){
-        return mediaListViewModel;
-    }
 }

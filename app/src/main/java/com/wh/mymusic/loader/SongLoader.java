@@ -4,6 +4,7 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.BaseColumns;
 import android.provider.MediaStore;
 
@@ -131,11 +132,13 @@ public class SongLoader {
         }
 
         // Blacklist
-//        List<String> paths = BlacklistStore.getInstance(context).getPaths();
-//        if (!paths.isEmpty()) {
-//            selection = generateBlacklistSelection(selection, paths.size());
-//            selectionValues = addBlacklistSelectionValues(selectionValues, paths);
-//        }
+        List<String> paths = new ArrayList<>();
+        paths.add("/storage/emulated/0/smartisan/Recorder");
+        paths.add("/storage/emulated/0/trainings");
+        if (!paths.isEmpty()) {
+            selection = generateBlacklistSelection(selection, paths.size());
+            selectionValues = addBlacklistSelectionValues(selectionValues, paths);
+        }
 
         try {
             return context.getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
@@ -145,24 +148,24 @@ public class SongLoader {
         }
     }
 
-//    private static String generateBlacklistSelection(String selection, int pathCount) {
-//        String newSelection = selection != null && !selection.trim().equals("") ? selection + " AND " : "";
-//        newSelection += MediaStore.Audio.AudioColumns.DATA + " NOT LIKE ?";
-//        for (int i = 0; i < pathCount - 1; i++) {
-//            newSelection += " AND " + MediaStore.Audio.AudioColumns.DATA + " NOT LIKE ?";
-//        }
-//        return newSelection;
-//    }
+    private static String generateBlacklistSelection(String selection, int pathCount) {
+        StringBuilder newSelection = new StringBuilder(selection != null && !selection.trim().equals("") ? selection + " AND " : "");
+        newSelection.append(MediaStore.Audio.AudioColumns.DATA + " NOT LIKE ?");
+        for (int i = 0; i < pathCount - 1; i++) {
+            newSelection.append(" AND " + MediaStore.Audio.AudioColumns.DATA + " NOT LIKE ?");
+        }
+        return newSelection.toString();
+    }
 
-//    private static String[] addBlacklistSelectionValues(String[] selectionValues, List<String> paths) {
-//        if (selectionValues == null) selectionValues = new String[0];
-//        String[] newSelectionValues = new String[selectionValues.length + paths.size()];
-//        System.arraycopy(selectionValues, 0, newSelectionValues, 0, selectionValues.length);
-//        for (int i = selectionValues.length; i < newSelectionValues.length; i++) {
-//            newSelectionValues[i] = paths.get(i - selectionValues.length) + "%";
-//        }
-//        return newSelectionValues;
-//    }
+    private static String[] addBlacklistSelectionValues(String[] selectionValues, List<String> paths) {
+        if (selectionValues == null) selectionValues = new String[0];
+        String[] newSelectionValues = new String[selectionValues.length + paths.size()];
+        System.arraycopy(selectionValues, 0, newSelectionValues, 0, selectionValues.length);
+        for (int i = selectionValues.length; i < newSelectionValues.length; i++) {
+            newSelectionValues[i] = paths.get(i - selectionValues.length) + "%";
+        }
+        return newSelectionValues;
+    }
 
 
 }

@@ -36,6 +36,15 @@ public class LocalMainFragment extends BaseFragment {
     private ViewPager2 vp_main_local;
     private TabLayout tabLayout;
 
+    private static LocalMainFragment instance;
+
+    public static LocalMainFragment getInstance(){
+        if(instance==null){
+            instance = new LocalMainFragment();
+        }
+        return instance;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
