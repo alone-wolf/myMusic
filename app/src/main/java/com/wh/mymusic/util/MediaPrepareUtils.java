@@ -102,12 +102,12 @@ public class MediaPrepareUtils {
                 boolean has = false;
                 AudioAlbum audioAlbum = new AudioAlbum(
                         cursor.getString(albumColumn),
-                        cursor.getInt(albumIdColumn),
+                        cursor.getLong(albumIdColumn),
                         cursor.getString(albumArtistColumn),
                         ""
                 );
                 for (AudioAlbum aa : BaseApp.audioAlbums) {
-                    if (aa.getAlbumId() == audioAlbum.getAlbumId()) {
+                    if (aa.getAlbumId().equals(audioAlbum.getAlbumId())) {
                         has = true;
                         break;
                     }

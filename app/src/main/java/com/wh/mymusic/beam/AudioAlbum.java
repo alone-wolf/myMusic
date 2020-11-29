@@ -2,11 +2,11 @@ package com.wh.mymusic.beam;
 
 public class AudioAlbum {
     private String albumName;
-    private int albumId;
+    private Long albumId;
     private String albumArtist;
     private String albumCoverResource;
 
-    public AudioAlbum(String albumName, int albumId, String albumArtist, String albumCoverResource) {
+    public AudioAlbum(String albumName, Long albumId, String albumArtist, String albumCoverResource) {
         this.albumName = albumName;
         this.albumId = albumId;
         this.albumArtist = albumArtist;
@@ -21,11 +21,11 @@ public class AudioAlbum {
         this.albumName = albumName;
     }
 
-    public int getAlbumId() {
+    public Long getAlbumId() {
         return albumId;
     }
 
-    public void setAlbumId(int albumId) {
+    public void setAlbumId(Long albumId) {
         this.albumId = albumId;
     }
 

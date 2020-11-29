@@ -7,10 +7,11 @@
         <item
             android:id="@+id/localMainFragment"
             android:icon="@drawable/ic_baseline_folder_open_24"
-            android:title="@string/menu_home" />
+            android:title="@string/side_drawer_title_local" />
+
         <item
             android:id="@+id/settingsFragment"
             android:icon="@drawable/ic_baseline_settings_24"
-            android:title="@string/menu_gallery" />
+            android:title="@string/side_drawer_title_settings" />
     </group>
 </menu>

@@ -1,6 +1,8 @@
-package com.wh.mymusic.fragment;
+package com.wh.mymusic.fragment.local;
 
 import androidx.fragment.app.Fragment;
+
+import com.wh.mymusic.fragment.BaseFragment;
 
 public class LocalFolderFragment extends BaseFragment {
 }

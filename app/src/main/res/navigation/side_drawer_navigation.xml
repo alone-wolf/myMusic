@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/localMainFragment"
-        android:name="com.wh.mymusic.fragment.LocalMainFragment"
+        android:name="com.wh.mymusic.fragment.local.LocalMainFragment"
         android:label="LocalMainFragment" />
     <fragment
         android:id="@+id/settingsFragment"

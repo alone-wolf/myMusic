@@ -4,10 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="16dp"
     android:clickable="true"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:focusable="true"
+        android:background="@drawable/item_audio_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -16,35 +21,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.16" />
+            app:layout_constraintGuide_percent="0.18" />
 
         <TextView
-            android:id="@+id/tv_item_audio_title"
+            android:id="@+id/tv_item_song_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="14dp"
             android:layout_marginTop="8dp"
             android:lines="1"
             android:text="TextView"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_item_audio_artist"
+            app:layout_constraintBottom_toTopOf="@+id/tv_item_song_artist"
             app:layout_constraintStart_toStartOf="@+id/guideline4"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_item_audio_artist"
+            android:id="@+id/tv_item_song_artist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:textSize="14sp"
             android:lines="1"
             android:text="TextView"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_item_audio_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_item_audio_title" />
+            app:layout_constraintStart_toStartOf="@+id/tv_item_song_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_song_title" />
 
         <ImageView
-            android:id="@+id/iv_item_audio_cover"
+            android:id="@+id/iv_item_song_cover"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"

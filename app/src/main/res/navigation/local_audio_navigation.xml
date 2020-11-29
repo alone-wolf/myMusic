@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/audioListFragment"
-        android:name="com.wh.mymusic.fragment.LocalAudioListFragment"
+        android:name="com.wh.mymusic.fragment.local.LocalSongListFragment"
         android:label="AudioListFragment" />
     <fragment
         android:id="@+id/blankFragment"
