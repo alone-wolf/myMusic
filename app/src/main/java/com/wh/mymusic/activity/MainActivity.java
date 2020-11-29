@@ -1,16 +1,21 @@
 package com.wh.mymusic.activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.wh.mymusic.PlayService;
 import com.wh.mymusic.R;
 import com.wh.mymusic.util.Util;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends BaseMainActivity {
+    private String TAG = "WH_"+getClass().getSimpleName();
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -36,11 +42,43 @@ public class MainActivity extends BaseMainActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setImageResource(R.drawable.ic_launcher_foreground);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("ctrl")
+                        .setItems(new String[]{
+                                "previous",
+                                "play|pause",
+                                "next",
+                                "exit"
+                        }, (dialog, which) -> {
+                            String ACTION = "";
+                            switch (which){
+                                case 0:{
+                                    ACTION = PlayService.ACTION_CTRL_PLAY_PREVIOUS;
+                                    break;
+                                }
+                                case 1:{
+                                    ACTION = PlayService.ACTION_CTRL_PLAY_PAUSE;
+                                    break;
+                                }
+                                case 2:{
+                                    ACTION = PlayService.ACTION_CTRL_PLAY_NEXT;
+                                    break;
+                                }
+                                case 3:{
+                                    ACTION = PlayService.ACTION_CTRL_STOP_THEN_EXIT;
+                                    break;
+                                }
+                            }
+                            Intent intent = new Intent();
+                            intent.setAction(ACTION);
+                            sendBroadcast(intent);
+                        })
+                        .create()
+                        .show();
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -18,6 +18,7 @@ public class BaseApp extends Application {
     public static List<Audio> audiosToPlay;
     public static List<AudioAlbum> audioAlbums;
     public static List<Pair<Long, Bitmap>>albumCovers;
+    public static long currentSongId = -1L;
 
     public BaseApp(){
         songsAll = new ArrayList<>();

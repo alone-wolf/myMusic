@@ -7,18 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.wh.mymusic.R;
-import com.wh.mymusic.adapter.SongListAdapter;
 import com.wh.mymusic.adapter.SongListKotlinAdapter;
-import com.wh.mymusic.beam.Song;
 import com.wh.mymusic.viewmodel.MediaListViewModel;
 
-import java.util.List;
 
 public class LocalAudioListFragment extends BaseFragment {
 
