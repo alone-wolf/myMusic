@@ -27,7 +27,7 @@
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/v"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:background="#83656565"
@@ -47,7 +47,7 @@
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_item_album_cover"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        app:layout_constraintEnd_toEndOf="@+id/v"
+        app:layout_constraintStart_toStartOf="@+id/v"
+        app:layout_constraintTop_toTopOf="@+id/v" />
 </androidx.constraintlayout.widget.ConstraintLayout>

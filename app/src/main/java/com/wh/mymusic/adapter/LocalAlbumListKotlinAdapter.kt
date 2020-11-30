@@ -51,6 +51,7 @@ class LocalAlbumListKotlinAdapter(activity: AppCompatActivity)
         val item = getItem(position)
         holder.itemView.setTag(R.id.local_album_tag,item)
         ViewUtils.setViewCornerRadius(holder.ivItemAlbumCover)
+        ViewUtils.setViewCornerRadius(holder.itemView.v)
 
         GlobalScope.launch(Dispatchers.Main) {
             val uri = loadAlbumCoverUri(item)
