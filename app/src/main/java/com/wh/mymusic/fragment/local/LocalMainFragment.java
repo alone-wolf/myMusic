@@ -29,17 +29,8 @@ public class LocalMainFragment extends BaseFragment {
     private String TAG = "WH_"+getClass().getSimpleName();
 
 
-    private ViewPager2 vp_main_local;
-    private TabLayout tabLayout;
-
-    private static LocalMainFragment instance;
-
-    public static LocalMainFragment getInstance(){
-        if(instance==null){
-            instance = new LocalMainFragment();
-        }
-        return instance;
-    }
+    private ViewPager2 vp_local_main;
+    private TabLayout tl_local_main;
 
     @Nullable
     @Override
@@ -50,8 +41,8 @@ public class LocalMainFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        vp_main_local = view.findViewById(R.id.vp_main_local);
-        tabLayout = view.findViewById(R.id.tl_main_local);
+        vp_local_main = view.findViewById(R.id.vp_local_main);
+        tl_local_main = view.findViewById(R.id.tl_local_main);
     }
 
     @Override
@@ -73,7 +64,7 @@ public class LocalMainFragment extends BaseFragment {
             }
         });
 
-        vp_main_local.setAdapter(new FragmentStateAdapter(requireActivity()) {
+        vp_local_main.setAdapter(new FragmentStateAdapter(requireActivity()) {
             @NonNull
             @Override
             public Fragment createFragment(int position) {
@@ -102,9 +93,9 @@ public class LocalMainFragment extends BaseFragment {
             }
         });
 
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tl_local_main.setTabMode(TabLayout.MODE_SCROLLABLE);
         String[] titles = new String[]{"Audio", "Album", "Artist","Folder"};
-        new TabLayoutMediator(tabLayout, vp_main_local, (tab, position) -> tab.setText(titles[position]))
+        new TabLayoutMediator(tl_local_main, vp_local_main, (tab, position) -> tab.setText(titles[position]))
                 .attach();
 
     }

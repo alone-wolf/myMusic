@@ -87,16 +87,16 @@ public class MainActivity extends BaseMainActivity {
                         .show();
             }
         });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.localMainFragment, R.id.AFragment,R.id.BFragment,R.id.settingsFragment)
+//        mAppBarConfiguration = new AppBarConfiguration.Builder(
+//                R.id.localMainFragment, R.id.AFragment,R.id.BFragment,R.id.settingsFragment)
 //                .setDrawerLayout(drawer)
-                .build();
+//                .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
         mediaListViewModel = ViewModelProviders.of(this).get(MediaListViewModel.class);
