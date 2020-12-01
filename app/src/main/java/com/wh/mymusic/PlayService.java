@@ -49,7 +49,7 @@ public class PlayService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
+//         TODO: Return the communication channel to the service.
         return musicBinder;
     }
 
@@ -81,7 +81,7 @@ public class PlayService extends Service {
                         Log.d(TAG, "onReceive: " + ACTION);
                         if (player.hasNext()) {
                             player.next();
-                            if(!player.isPlaying()){
+                            if (!player.isPlaying()) {
                                 player.play();
                             }
                         }
@@ -91,7 +91,7 @@ public class PlayService extends Service {
                         Log.d(TAG, "onReceive: " + ACTION);
                         if (player.hasPrevious()) {
                             player.previous();
-                            if(!player.isPlaying()){
+                            if (!player.isPlaying()) {
                                 player.play();
                             }
                         }
@@ -110,10 +110,10 @@ public class PlayService extends Service {
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("playing", "name",
-                    NotificationManager.IMPORTANCE_LOW);
             if (notificationManager != null) {
-                notificationManager.createNotificationChannel(channel);
+                notificationManager.createNotificationChannel(
+                        new NotificationChannel("playing", "name",
+                        NotificationManager.IMPORTANCE_LOW));
             }
         }
 

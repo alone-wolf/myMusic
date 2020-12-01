@@ -10,6 +10,16 @@
             android:title="@string/side_drawer_title_local" />
 
         <item
+            android:id="@+id/AFragment"
+            android:icon="@drawable/ic_baseline_folder_open_24"
+            android:title="AFragment" />
+
+        <item
+            android:id="@+id/BFragment"
+            android:icon="@drawable/ic_baseline_folder_open_24"
+            android:title="BFragment" />
+
+        <item
             android:id="@+id/settingsFragment"
             android:icon="@drawable/ic_baseline_settings_24"
             android:title="@string/side_drawer_title_settings" />

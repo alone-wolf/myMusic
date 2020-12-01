@@ -8,6 +8,14 @@
         android:name="com.wh.mymusic.fragment.local.LocalMainFragment"
         android:label="LocalMainFragment" />
     <fragment
+        android:id="@+id/AFragment"
+        android:name="com.wh.mymusic.fragment.online.AFragment"
+        android:label="AFragment" />
+    <fragment
+        android:id="@+id/BFragment"
+        android:name="com.wh.mymusic.fragment.online.BFragment"
+        android:label="BFragment" />
+    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.wh.mymusic.fragment.SettingsFragment"
         android:label="SettingsFragment" />
