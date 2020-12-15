@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:checkableBehavior="single">
         <item
             android:id="@+id/localMainFragment"
             android:icon="@drawable/ic_baseline_folder_open_24"
@@ -19,6 +20,18 @@
             android:icon="@drawable/ic_baseline_folder_open_24"
             android:title="BFragment" />
 
+        <item
+            android:id="@+id/CFragment"
+            android:icon="@drawable/ic_baseline_folder_open_24"
+            android:title="CFragment" />
+        <item
+            android:id="@+id/DFragment"
+            android:icon="@drawable/ic_baseline_folder_open_24"
+            android:title="DFragment" />
+        <item
+            android:id="@+id/EFragment"
+            android:icon="@drawable/ic_baseline_folder_open_24"
+            android:title="EFragment" />
         <item
             android:id="@+id/settingsFragment"
             android:icon="@drawable/ic_baseline_settings_24"

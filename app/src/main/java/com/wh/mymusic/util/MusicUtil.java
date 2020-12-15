@@ -42,30 +42,30 @@ public class MusicUtil {
     public static Uri getMediaStoreAlbumCoverUri(long albumId) {
         final Uri sArtworkUri = Uri.parse("content://media/external/audio/albumart");
         Uri u = ContentUris.withAppendedId(sArtworkUri, albumId);
-        Log.d(TAG, "getMediaStoreAlbumCoverUri: "+u);
+//        Log.d(TAG, "getMediaStoreAlbumCoverUri: "+u);
 
         return u;
     }
 
-    public static Uri getSongFileUri(long songId) {
-        return ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, songId);
-    }
-
-    @NonNull
-    public static Intent createShareSongFileIntent(@NonNull final Song song, Context context) {
-        try {
-            return new Intent()
-                    .setAction(Intent.ACTION_SEND)
-                    .putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName(), new File(song.getData())))
-                    .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                    .setType("audio/*");
-        } catch (IllegalArgumentException e) {
-            // TODO the path is most likely not like /storage/emulated/0/... but something like /storage/28C7-75B0/...
-            e.printStackTrace();
-            Toast.makeText(context, "Could not share this file, I'm aware of the issue.", Toast.LENGTH_SHORT).show();
-            return new Intent();
-        }
-    }
+//    public static Uri getSongFileUri(long songId) {
+//        return ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, songId);
+//    }
+//
+//    @NonNull
+//    public static Intent createShareSongFileIntent(@NonNull final Song song, Context context) {
+//        try {
+//            return new Intent()
+//                    .setAction(Intent.ACTION_SEND)
+//                    .putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName(), new File(song.getData())))
+//                    .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+//                    .setType("audio/*");
+//        } catch (IllegalArgumentException e) {
+//            // TODO the path is most likely not like /storage/emulated/0/... but something like /storage/28C7-75B0/...
+//            e.printStackTrace();
+//            Toast.makeText(context, "Could not share this file, I'm aware of the issue.", Toast.LENGTH_SHORT).show();
+//            return new Intent();
+//        }
+//    }
 
 
 

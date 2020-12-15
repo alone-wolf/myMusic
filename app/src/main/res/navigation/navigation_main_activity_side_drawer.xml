@@ -16,6 +16,18 @@
         android:name="com.wh.mymusic.fragment.online.BFragment"
         android:label="BFragment" />
     <fragment
+        android:id="@+id/CFragment"
+        android:name="com.wh.mymusic.fragment.online.CFragment"
+        android:label="CFragment"/>
+    <fragment
+        android:id="@+id/DFragment"
+        android:name="com.wh.mymusic.fragment.online.DFragment"
+        android:label="CFragment"/>
+    <fragment
+        android:id="@+id/EFragment"
+        android:name="com.wh.mymusic.fragment.online.EFragment"
+        android:label="CFragment"/>
+    <fragment
         android:id="@+id/settingsFragment"
         android:name="com.wh.mymusic.fragment.SettingsFragment"
         android:label="SettingsFragment" />
