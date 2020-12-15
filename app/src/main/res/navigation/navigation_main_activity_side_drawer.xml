@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/side_drawer_navigation"
+    app:startDestination="@id/localMainFragment">
+
+    <fragment
+        android:id="@+id/localMainFragment"
+        android:name="com.wh.mymusic.fragment.local.LocalMainFragment"
+        android:label="LocalMainFragment" />
+    <fragment
+        android:id="@+id/AFragment"
+        android:name="com.wh.mymusic.fragment.online.AFragment"
+        android:label="AFragment" />
+    <fragment
+        android:id="@+id/BFragment"
+        android:name="com.wh.mymusic.fragment.online.BFragment"
+        android:label="BFragment" />
+    <fragment
+        android:id="@+id/CFragment"
+        android:name="com.wh.mymusic.fragment.online.CFragment"
+        android:label="CFragment"/>
+    <fragment
+        android:id="@+id/DFragment"
+        android:name="com.wh.mymusic.fragment.online.DFragment"
+        android:label="CFragment"/>
+    <fragment
+        android:id="@+id/EFragment"
+        android:name="com.wh.mymusic.fragment.online.EFragment"
+        android:label="CFragment"/>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.wh.mymusic.fragment.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>

@@ -166,8 +166,6 @@ class LocalSongListKotlinAdapter(activity: AppCompatActivity) :
     }
 
     private suspend fun loadAlbumCoverUri(song: Song, activity: AppCompatActivity) = withContext(Dispatchers.IO){
-        Log.d(TAG, "loadAlbumCover: ")
-
         return@withContext MusicUtil.getMediaStoreAlbumCoverUri(song.albumId)
     }
 }

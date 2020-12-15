@@ -65,6 +65,7 @@ dependencies {
 
     implementation 'com.github.kabouzeid:AndroidSlidingUpPanel:6'
     implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
+    implementation 'com.github.clans:fab:1.6.4'
 
 
 }
