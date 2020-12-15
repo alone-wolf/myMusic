@@ -2,4 +2,5 @@
 <resources>
     <item name="local_song_tag" type="id"/>
     <item name="local_album_tag" type="id"/>
+    <item name="web_dav_path" type="id"/>
 </resources>

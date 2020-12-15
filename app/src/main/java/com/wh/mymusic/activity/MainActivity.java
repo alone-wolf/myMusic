@@ -9,6 +9,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import androidx.preference.Preference;
+
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.permissionx.guolindev.PermissionX;
@@ -18,17 +29,6 @@ import com.wh.mymusic.loader.SongLoader;
 import com.wh.mymusic.util.MediaPrepareUtils;
 import com.wh.mymusic.util.Util;
 import com.wh.mymusic.viewmodel.MediaListViewModel;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.appcompat.widget.Toolbar;
-import androidx.preference.Preference;
 
 public class MainActivity extends BaseMainActivity implements Preference.OnPreferenceChangeListener {
     private String TAG = "WH_" + getClass().getSimpleName();
